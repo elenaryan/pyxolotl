@@ -7,6 +7,7 @@ from pyxolotl.core import Pyxolotl
 from pyxolotl.protocol.basic import Message
 from pyxolotl.exceptions import NoSessionException, PendingKeyExchangeException
 from pyxolotl.cryptostorage import CryptoStorage
+from pyxolotl.TextSpinGram import TextSpinGram
 
 UNENCRYPTED_PASSPHRASE = b'unencrypted'
 
@@ -109,8 +110,10 @@ def command_list(args):
 
 def command_send(args):
     axo = Pyxolotl(args.db, cryptostorage=get_cryptostorage())
+    spin = TextSpinGram()
     transport = args.transport_obj
     message = args.message or input('Message: ')
+    message = spin.spinIt(message)
     try:
         transport.send(axo.send(args.recipient, message))
     except NoSessionException:
