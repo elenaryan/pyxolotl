@@ -8,6 +8,7 @@ from pyxolotl.protocol.basic import Message
 from pyxolotl.exceptions import NoSessionException, PendingKeyExchangeException
 from pyxolotl.cryptostorage import CryptoStorage
 from pyxolotl.TextSpinGram import TextSpinGram
+#Elena Ryan adding spinning capabilities
 
 UNENCRYPTED_PASSPHRASE = b'unencrypted'
 
